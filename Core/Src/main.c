@@ -66,8 +66,8 @@ float setpoint = 0;
 float rightMotor;
 float leftMotor;
 float kp = 2;
-float ki = 0;
-float kd = 0.12;
+float ki = 0.01;
+float kd = 0.32;
 float pidCalculate;
 float linear_v = 100;
 
@@ -567,9 +567,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if(norm_ss[1] >0.4 || norm_ss[2] > 0.4 || norm_ss[3] >0.4 || norm_ss[4] > 0.4 || norm_ss[5] >0.4 || norm_ss [7] >0.4)
 	{
 		//forward
-		TIM3->CCR1 = leftMotor-30; //100*leftMotor/100;
+		TIM3->CCR1 = leftMotor-15; //100*leftMotor/100;
 		TIM3->CCR2 = 0;
-		TIM3->CCR3 = rightMotor-30; //100*rightMotor/100;
+		TIM3->CCR3 = rightMotor-15; //100*rightMotor/100;
 		TIM3->CCR4 = 0;
 
 	}else{
